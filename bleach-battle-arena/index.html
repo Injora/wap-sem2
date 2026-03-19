@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bleach Battle Arena</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main_box">
+        <div id="head">
+            <h1>Bleach Battle Arena ⚔️</h1>
+            <p>Assemble your team of 3 characters and battle!</p>
+        </div>
+        <div id="top_menu">
+            <div class="search_div">
+                <input type="text" id="find_input" placeholder="Search character by name...">
+            </div>
+            <div class="filter_divs">
+                <select id="race_drop">
+                    <option value="all">All Races</option>
+                    <option value="Soul Reaper">Soul Reaper</option>
+                    <option value="Hollow">Hollow</option>
+                    <option value="Arrancar">Arrancar</option>
+                    <option value="Quincy">Quincy</option>
+                    <option value="Human">Human</option>
+                </select>
+                <select id="gen_drop">
+                    <option value="all">All Genders</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="sort_div">
+                <select id="bp_sort">
+                    <option value="default">Sort by BP</option>
+                    <option value="asc">Lowest to Highest BP</option>
+                    <option value="desc">Highest to Lowest BP</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="bottom_part">
+            <div id="left_col">
+                <h2>Character Roster</h2>
+                <div id="chars_grid" class="cards_area">
+                    <p class="loading">Loading characters...</p>
+                </div>
+            </div>
+            <div id="right_col">
+                <div id="team_sec">
+                    <h2>Your Team (<span id="t_count">0</span>/3)</h2>
+                    <div id="chosen_chars">
+                    </div>
+                    <button id="btn1" disabled>Start Battle</button>
+                </div>
+                <div id="fight_sec" class="hide">
+                    <h2>🗡️ Battle Log 🗡️</h2>
+                    <div id="log_box">
+                    </div>
+                    <div id="result_text"></div>
+                    <button id="btn2" class="hide">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
