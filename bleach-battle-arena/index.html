@@ -10,7 +10,7 @@
 
 <body>
     <div id="main_box">
-        <div id="head">
+        <div id="head" style="position: relative;">
             <h1>Bleach Battle Arena ⚔️</h1>
             <p>Assemble your team of 3 characters and battle!</p>
         </div>
@@ -18,7 +18,7 @@
             <div class="search_div">
                 <input type="text" id="find_input" placeholder="Search character by name...">
             </div>
-            <div class="filter_divs">
+            <div class="filters">
                 <select id="race_drop">
                     <option value="all">All Races</option>
                     <option value="Soul Reaper">Soul Reaper</option>
@@ -27,13 +27,13 @@
                     <option value="Quincy">Quincy</option>
                     <option value="Human">Human</option>
                 </select>
-                <select id="gen_drop">
+                <select id="gender">
                     <option value="all">All Genders</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
             </div>
-            <div class="sort_div">
+            <div class="sort">
                 <select id="bp_sort">
                     <option value="default">Sort by BP</option>
                     <option value="asc">Lowest to Highest BP</option>
@@ -51,10 +51,45 @@
             </div>
             <div id="right_col">
                 <div id="team_sec">
-                    <h2>Your Team (<span id="t_count">0</span>/3)</h2>
-                    <div id="chosen_chars">
+                    <h2 style="text-align: center; margin-top: 0;">2-Player Draft</h2>
+                    <div style="display:flex; justify-content: space-between; gap: 15px;">
+                        <div id="p1_panel" class="player-panel"
+                            style="flex:1; border: 2px solid #4CAF50; padding: 10px; border-radius: 8px; cursor: pointer;">
+                            <h3 style="margin-top:0; text-align:center; color: #4CAF50;">P1 (<span
+                                    id="t1_count">0</span>/3)</h3>
+                            <div id="chosen_chars_p1" class="chosen-grid"
+                                style="min-height: 100px; display: flex; flex-direction: column; gap: 5px;"></div>
+                            <button id="rand_p1_btn"
+                                style="width:100%; margin-top: 10px; background: #3c823f; font-size:12px; padding: 5px;">🎲
+                                Random P1</button>
+                            <button id="undo_p1_btn"
+                                style="width:100%; margin-top: 5px; background:#777; font-size:12px; padding:5px;">
+                                ↩️ Undo Last
+                            </button>
+
+                        </div>
+
+                        <div id="p2_panel" class="player-panel"
+                            style="flex:1; border: 2px solid #333; padding: 10px; border-radius: 8px; cursor: pointer;">
+                            <h3 style="margin-top:0; text-align:center; color: #ff5555;">P2 (<span
+                                    id="t2_count">0</span>/3)</h3>
+                            <div id="chosen_chars_p2" class="chosen-grid"
+                                style="min-height: 100px; display: flex; flex-direction: column; gap: 5px;"></div>
+                            <button id="rand_p2_btn"
+                                style="width:100%; margin-top: 10px; background: #a83d3d; font-size:12px; padding: 5px;">🎲
+                                Random P2</button>
+                            <button id="undo_p2_btn"
+                                style="width:100%; margin-top: 5px; background:#777; font-size:12px; padding:5px;">
+                                ↩️ Undo Last
+                            </button>
+
+                        </div>
                     </div>
-                    <button id="btn1" disabled>Start Battle</button>
+
+                    <div style="margin-top: 15px; display:flex; gap: 10px;">
+                        <button id="reset_teams_btn" style="background:#555; flex:1;">Reset</button>
+                        <button id="btn1" style="flex:2;" disabled>Start Local Battle</button>
+                    </div>
                 </div>
                 <div id="fight_sec" class="hide">
                     <h2>🗡️ Battle Log 🗡️</h2>
@@ -64,6 +99,14 @@
                     <button id="btn2" class="hide">Play Again</button>
                 </div>
             </div>
+        </div>
+
+    </div>
+
+    <div id="char_modal" class="modal-hide">
+        <div class="modal-content" id="modal_content_box">
+            <span id="close_modal_btn">&times;</span>
+            <div id="modal_inner"></div>
         </div>
     </div>
 
