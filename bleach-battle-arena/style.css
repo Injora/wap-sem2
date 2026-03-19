@@ -1,0 +1,340 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #050505;
+    background-image: radial-gradient(circle at top right, #1a0000, #050505);
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+#head {
+    background: linear-gradient(90deg, #300, #900, #300);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    border-bottom: 3px solid #ff0000;
+    animation: timeGlow 1.5s infinite alternate;
+}
+
+@keyframes timeGlow {
+    0% {
+        text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+        box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1);
+    }
+
+    100% {
+        text-shadow: 0 0 20px #f00, 0 0 40px #f00, 0 0 60px #f00;
+        box-shadow: 0 5px 30px rgba(255, 0, 0, 0.4);
+    }
+}
+
+#main_box {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#top_menu {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(10, 0, 0, 0.8);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ff0000;
+    box-shadow: 0px 4px 15px rgba(255, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.search_div input,
+.filters select,
+.sort select {
+    padding: 10px;
+    font-size: 16px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #500;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search_div input:focus,
+.filters select:focus,
+.sort select:focus {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    border-color: #ff0000;
+}
+
+.filters select,
+.sort select {
+    margin-left: 10px;
+}
+
+#bottom_part {
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+#left_col {
+    width: 70%;
+    background: rgba(10, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #400;
+}
+
+#right_col {
+    width: 30%;
+}
+
+h2 {
+    color: #ff3333;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff3333;
+    padding-bottom: 5px;
+    text-shadow: 0 0 10px #f00;
+}
+
+#chars_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid #500;
+    padding: 10px;
+    width: 180px;
+    text-align: center;
+    border-radius: 10px;
+    background: #0a0a0a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+    transform: skewX(-20deg);
+    animation: shineCard 4s infinite;
+}
+
+@keyframes shineCard {
+    0% {
+        left: -100%;
+    }
+
+    50% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #222;
+    transition: 0.3s;
+}
+
+.card:hover img {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 0, 0, 0.4);
+    border-color: #ff0000;
+}
+
+.card button {
+    background: linear-gradient(45deg, #600, #f00);
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 0 5px #f00;
+}
+
+.card button:hover {
+    background: linear-gradient(45deg, #f00, #ff5555);
+    box-shadow: 0 0 20px #ff0000;
+    transform: scale(1.05);
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+#team_sec,
+#fight_sec {
+    background: rgba(10, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ff0000;
+    box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.1);
+}
+
+#chosen_chars {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#chosen_chars .team-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #500;
+    background: #0a0a0a;
+    padding: 8px;
+    border-radius: 5px;
+    animation: dropIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes dropIn {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#chosen_chars img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ff0000;
+    margin-right: 10px;
+    box-shadow: 0 0 10px #f00;
+}
+
+#btn1,
+#btn2 {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    background: linear-gradient(90deg, #400, #d00, #400);
+    background-size: 200% auto;
+    color: white;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: moveGrad 3s infinite linear;
+    transition: 0.3s;
+}
+
+@keyframes moveGrad {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+#btn1:hover:not(:disabled),
+#btn2:hover {
+    box-shadow: 0 0 25px #ff0000;
+    transform: scale(1.05);
+}
+
+#btn1:disabled {
+    background: #222;
+    color: #666;
+    border-color: #444;
+    cursor: not-allowed;
+    animation: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+#log_box {
+    background: #000;
+    color: #0f0;
+    padding: 15px;
+    height: 180px;
+    overflow-y: auto;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    box-shadow: inset 0 0 15px #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+#result_text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    color: #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+    animation: flash 1s infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #bottom_part {
+        flex-direction: column;
+    }
+
+    #left_col,
+    #right_col {
+        width: 100%;
+    }
+
+    #top_menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
