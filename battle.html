@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bleach Battle Arena - BATTLE!</title>
     <link rel="stylesheet" href="battle.css">
+    <script>
+        (function() {
+            if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');
+        })();
+    </script>
 </head>
+
 <body>
-    
     <div id="flash_overlay"></div>
-
-    
     <div id="impact_text"></div>
-
-    
+    <button id="theme_toggle" onclick="toggleTheme()" title="Toggle light/dark mode" style="position:fixed;top:12px;right:16px;z-index:9999;">🌙</button>
     <header class="battle-header">
         <div class="team-info p1-info">
             <h2>Player 1</h2>
@@ -26,9 +29,8 @@
         </div>
     </header>
 
-    
     <main class="arena" id="arena_stage">
-        
+
         <div class="fighter-zone left-zone" id="p1_zone">
             <div class="hud">
                 <div class="name-bar" id="p1_name"></div>
@@ -43,7 +45,6 @@
             <div class="combat-quote" id="p1_quote"></div>
         </div>
 
-        
         <div class="fighter-zone right-zone" id="p2_zone">
             <div class="hud">
                 <div class="name-bar" id="p2_name"></div>
@@ -59,18 +60,24 @@
         </div>
     </main>
 
-    
     <footer class="battle-log-container">
         <h3>Battle Narrator</h3>
         <div id="battle_log"></div>
     </footer>
-
-    
     <div id="victory_screen" class="hidden">
         <h1 id="victory_title">PLAYER 1 WINS!</h1>
         <button onclick="window.location.href='index.html'" class="rematch-btn">Return to Team Select</button>
     </div>
 
+    <script>
+        function toggleTheme() {
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            document.getElementById('theme_toggle').textContent = isLight ? '☀️' : '🌙';
+        }
+        if (localStorage.getItem('theme') === 'light') document.getElementById('theme_toggle').textContent = '☀️';
+    </script>
     <script src="battle.js"></script>
 </body>
+
 </html>

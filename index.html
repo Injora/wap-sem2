@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bleach Battle Arena</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');
+        })();
+    </script>
 </head>
 
 <body>
     <div id="main_box">
         <div id="head" style="position: relative;">
+            <button id="theme_toggle" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
             <h1>Bleach Battle Arena ⚔️</h1>
             <p>Assemble your team of 3 characters and battle!</p>
         </div>
@@ -110,6 +116,14 @@
         </div>
     </div>
 
+    <script>
+        function toggleTheme() {
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            document.getElementById('theme_toggle').textContent = isLight ? '☀️' : '🌙';
+        }
+        if (localStorage.getItem('theme') === 'light') document.getElementById('theme_toggle').textContent = '☀️';
+    </script>
     <script src="script.js"></script>
 </body>
 
