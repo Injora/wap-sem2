@@ -1,18 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Rajdhani:wght@500;700&family=Noto+Serif+JP:wght@700&display=swap');
-
-/* ===== BLEACH THEME VARIABLES ===== */
-:root {
-    --bleach-orange: #ff6500;
-    --bleach-gold:   #c9a227;
-    --bleach-red:    #cc2200;
-    --bleach-dark:   #09090d;
-    --bleach-panel:  rgba(14, 10, 6, 0.82);
-    --bleach-border: rgba(201, 162, 39, 0.25);
-    --reiatsu-glow:  0 0 14px rgba(255, 101, 0, 0.5), 0 0 30px rgba(255, 101, 0, 0.2);
+@font-face {
+    font-family: 'Vampire Wars';
+    src: url('fonts/Vampire Wars.ttf') format('truetype'),
+         url('fonts/Vampire Wars.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Vampire Wars', sans-serif;
     background:
         radial-gradient(ellipse at 30% 0%, rgba(255,101,0,0.07) 0%, transparent 55%),
         radial-gradient(ellipse at 70% 100%, rgba(139,0,0,0.08) 0%, transparent 55%),
@@ -35,11 +30,6 @@ body::before {
     z-index: -1;
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0a0704; }
-::-webkit-scrollbar-thumb { background: var(--bleach-gold); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--bleach-orange); }
-
 #head {
     background: linear-gradient(180deg, rgba(16,10,5,0.97) 0%, rgba(8,5,2,0.97) 100%);
     color: white;
@@ -47,13 +37,13 @@ body::before {
     padding: 45px 20px 35px;
     text-transform: uppercase;
     letter-spacing: 6px;
-    border-bottom: 2px solid var(--bleach-gold);
+    border-bottom: 2px solid #c9a227;
     box-shadow: 0 10px 40px rgba(0,0,0,0.9), 0 0 60px rgba(255,101,0,0.06);
     position: relative;
     overflow: hidden;
 }
 
-/* Reiatsu energy lines in header */
+
 #head::before {
     content: "";
     position: absolute;
@@ -71,7 +61,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--bleach-orange), var(--bleach-gold), var(--bleach-orange), transparent);
+    background: linear-gradient(90deg, transparent, #ff6500, #c9a227, #ff6500, transparent);
     animation: headerLine 4s ease-in-out infinite alternate;
 }
 @keyframes headerLine {
@@ -80,7 +70,7 @@ body::before {
 }
 
 #head h1 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Vampire Wars', sans-serif;
     margin: 0;
     font-size: 3rem;
     color: #fff;
@@ -98,7 +88,7 @@ body::before {
 
 #head p {
     font-size: 1.1rem;
-    color: var(--bleach-gold);
+    color: #c9a227;
     letter-spacing: 4px;
     opacity: 0.85;
 }
@@ -117,7 +107,7 @@ body::before {
     padding: 15px 25px;
     margin-top: 10px;
     border-radius: 6px;
-    border: 1px solid var(--bleach-border);
+    border: 1px solid rgba(201, 162, 39, 0.25);
     box-shadow: 0 8px 20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(201,162,39,0.1);
     flex-wrap: wrap;
     gap: 15px;
@@ -126,7 +116,7 @@ body::before {
 .search_div input, .filters select, .sort select {
     padding: 12px;
     font-size: 16px;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Vampire Wars', sans-serif;
     font-weight: 700;
     background: rgba(10, 6, 2, 0.85);
     color: #d4b896;
@@ -140,8 +130,8 @@ body::before {
 .search_div input { width: 250px; }
 
 .search_div input:focus, .filters select:focus, .sort select:focus {
-    box-shadow: var(--reiatsu-glow);
-    border-color: var(--bleach-orange);
+    box-shadow: 0 0 14px rgba(255, 101, 0, 0.5), 0 0 30px rgba(255, 101, 0, 0.2);
+    border-color: #ff6500;
     color: #fff;
 }
 
@@ -157,7 +147,7 @@ body::before {
     background: rgba(12, 7, 3, 0.5);
     padding: 25px;
     border-radius: 8px;
-    border: 1px solid var(--bleach-border);
+    border: 1px solid rgba(201, 162, 39, 0.25);
     box-shadow: inset 0 0 60px rgba(0,0,0,0.6), 0 0 20px rgba(255,101,0,0.03);
 }
 
@@ -168,12 +158,12 @@ body::before {
 }
 
 h2 {
-    color: var(--bleach-gold);
+    color: #c9a227;
     text-transform: uppercase;
     letter-spacing: 3px;
     border-bottom: 1px solid rgba(201,162,39,0.3);
     padding-bottom: 10px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Vampire Wars', sans-serif;
     text-shadow: 0 0 12px rgba(201,162,39,0.4), 0 2px 4px rgba(0,0,0,0.8);
 }
 
@@ -185,7 +175,7 @@ h2 {
     padding-top: 15px;
 }
 
-/* HOLO CARDS */
+
 .card {
     position: relative;
     border: 1px solid rgba(255,255,255,0.05);
@@ -276,7 +266,7 @@ h2 {
     cursor: pointer;
     width: 100%;
     font-weight: 700;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Vampire Wars', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -307,14 +297,14 @@ h2 {
     width: 120%;
 }
 
-/* PANELS */
+
 #team_sec, #fight_sec {
     background: rgba(14, 8, 3, 0.82);
     backdrop-filter: blur(12px);
     padding: 25px;
     border-radius: 8px;
     margin-bottom: 25px;
-    border: 1px solid var(--bleach-border);
+    border: 1px solid rgba(201, 162, 39, 0.25);
     box-shadow: 0 10px 30px rgba(0,0,0,0.85), inset 0 1px 0 rgba(201,162,39,0.08);
 }
 
@@ -337,7 +327,7 @@ h2 {
     gap: 10px;
 }
 
-/* DRAFTED CARDS */
+
 .team-card {
     display: flex;
     align-items: center;
@@ -367,7 +357,7 @@ h2 {
 }
 
 button {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Vampire Wars', sans-serif;
     letter-spacing: 1px;
 }
 
@@ -379,7 +369,7 @@ button {
 
 #btn1:not(:disabled) {
     background: linear-gradient(135deg, #8b3a00 0%, #5a2000 100%) !important;
-    border-color: var(--bleach-orange) !important;
+    border-color: #ff6500 !important;
     color: #fff !important;
     box-shadow: 0 0 20px rgba(255,101,0,0.5), inset 0 0 10px rgba(255,255,255,0.1);
     animation: breathingGlow 2s infinite alternate;
@@ -412,11 +402,11 @@ button {
 
 .hide { display: none !important; }
 
-/* MISC */
+
 .loading {
     text-align: center;
     width: 100%;
-    color: var(--bleach-orange);
+    color: #ff6500;
     font-size: 1.2rem;
     font-style: italic;
     padding: 30px;
@@ -425,8 +415,8 @@ button {
 }
 
 @keyframes pulse {
-    0% { opacity: 0.5; text-shadow: 0 0 8px var(--bleach-orange); }
-    100% { opacity: 1; text-shadow: 0 0 20px var(--bleach-orange), 0 0 40px rgba(255,101,0,0.4); }
+    0% { opacity: 0.5; text-shadow: 0 0 8px #ff6500; }
+    100% { opacity: 1; text-shadow: 0 0 20px #ff6500, 0 0 40px rgba(255,101,0,0.4); }
 }
 
 @media screen and (max-width: 900px) {
@@ -437,7 +427,7 @@ button {
         top: 0;
     }
 }
-/* CHARACTER MODAL */
+
 #char_modal {
     display: flex;
     position: fixed;
@@ -540,7 +530,7 @@ button {
 }
 
 .modal-title {
-    font-family: 'Cinzel', serif;
+    font-family: 'Vampire Wars', sans-serif;
     font-size: 3rem;
     margin: 0 0 15px 0;
     color: #fff;
@@ -587,7 +577,7 @@ button {
 
 .modal-abilities h4 {
     margin-top: 0;
-    color: var(--bleach-orange);
+    color: #ff6500;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-bottom: 1px dashed rgba(255,101,0,0.35);
@@ -632,14 +622,14 @@ button {
     }
 }
 
-/* ===== THEME TOGGLE BUTTON ===== */
+
 #theme_toggle {
     position: absolute;
     top: 20px;
     right: 25px;
     background: rgba(201,162,39,0.1);
     border: 1px solid rgba(201,162,39,0.4);
-    color: var(--bleach-gold);
+    color: #c9a227;
     font-size: 1.4rem;
     padding: 8px 14px;
     border-radius: 50px;
@@ -651,13 +641,13 @@ button {
 }
 #theme_toggle:hover {
     background: rgba(255,101,0,0.2);
-    border-color: var(--bleach-orange);
+    border-color: #ff6500;
     color: #fff;
     transform: scale(1.1);
     box-shadow: 0 0 14px rgba(255,101,0,0.5);
 }
 
-/* ===== LIGHT MODE ===== */
+
 html.light-mode body {
     background:
         radial-gradient(ellipse at 30% 0%, rgba(255,180,80,0.08) 0%, transparent 55%),
@@ -669,7 +659,7 @@ html.light-mode body::before { opacity: 0.04; }
 
 html.light-mode #head {
     background: linear-gradient(180deg, rgba(255,245,225,0.97) 0%, rgba(245,230,200,0.95) 100%);
-    border-bottom: 2px solid var(--bleach-gold);
+    border-bottom: 2px solid #c9a227;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 0 40px rgba(201,162,39,0.1);
 }
 html.light-mode #head h1 {
@@ -683,7 +673,7 @@ html.light-mode #theme_toggle {
     border-color: rgba(201,162,39,0.4);
     color: #7a4800;
 }
-html.light-mode #theme_toggle:hover { background: rgba(255,101,0,0.12); border-color: var(--bleach-orange); }
+html.light-mode #theme_toggle:hover { background: rgba(255,101,0,0.12); border-color: #ff6500; }
 
 html.light-mode #top_menu {
     background: rgba(255,245,225,0.75);
@@ -701,7 +691,7 @@ html.light-mode .search_div input:focus,
 html.light-mode .filters select:focus,
 html.light-mode .sort select:focus {
     box-shadow: 0 0 10px rgba(255,101,0,0.25);
-    border-color: var(--bleach-orange);
+    border-color: #ff6500;
 }
 
 html.light-mode #left_col {
@@ -741,9 +731,6 @@ html.light-mode .team-card:hover {
     background: linear-gradient(90deg, rgba(255,238,200,0.9) 0%, rgba(255,248,220,0.9) 100%);
 }
 
-html.light-mode ::-webkit-scrollbar-track { background: #f5e8cc; }
-html.light-mode ::-webkit-scrollbar-thumb { background: var(--bleach-gold); }
-
 html.light-mode #char_modal { background-color: rgba(180,150,80,0.4); }
 html.light-mode .modal-content {
     background: linear-gradient(135deg, rgba(255,252,240,0.98) 0%, rgba(255,244,220,0.99) 100%);
@@ -754,7 +741,7 @@ html.light-mode .modal-title { color: #2a1200; }
 html.light-mode .modal-stat-box { background: rgba(255,248,220,0.6); }
 html.light-mode .modal-stat-value { color: #1c1208; }
 html.light-mode .modal-abilities { background: rgba(255,242,200,0.5); border-color: rgba(201,162,39,0.2); }
-html.light-mode .modal-abilities h4 { color: var(--bleach-red); }
+html.light-mode .modal-abilities h4 { color: #cc2200; }
 html.light-mode .modal-abilities li { border-bottom-color: rgba(201,162,39,0.15); color: #1c1208; }
 html.light-mode #close_modal_btn { color: #7a5018; }
-html.light-mode #close_modal_btn:hover { color: var(--bleach-red); }
+html.light-mode #close_modal_btn:hover { color: #cc2200; }

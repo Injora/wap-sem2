@@ -204,22 +204,38 @@ undoP2Btn.addEventListener("click", (e) => {
 });
 const topMenu = document.getElementById("top_menu");
 const bottomPart = document.getElementById("bottom_part");
-async function fetchData() {
-    charsGrid.innerHTML = `<p class="loading">Gathering Spiritual Pressure</p>`;
-    try {
-        await fetch(API + "characters/shinigami");
-    } catch (e) {
-        console.warn("Initial API ping delayed, proceeding to bulk requests.");
+async function fetchData(attempt = 1) {
+    const maxAttempts = 3;
+    const retryDelay = 8000;
+
+    if (attempt === 1) {
+        charsGrid.innerHTML = `<p class="loading">Gathering Spiritual Pressure...</p>`;
+    } else {
+        let secs = retryDelay / 1000;
+        charsGrid.innerHTML = `<p class="loading">API is waking up... retrying in <span id="retry_countdown">${secs}</span>s (attempt ${attempt}/${maxAttempts})</p>`;
+        const countdown = setInterval(() => {
+            secs--;
+            const el = document.getElementById("retry_countdown");
+            if (el) el.textContent = secs;
+            if (secs <= 0) clearInterval(countdown);
+        }, 1000);
+        await new Promise(r => setTimeout(r, retryDelay));
+        charsGrid.innerHTML = `<p class="loading">Gathering Spiritual Pressure...</p>`;
     }
+
     try {
         const races = ["shinigami", "humans", "quincy", "arrancar"];
         const racePromises = races.map(race =>
-            fetch(API + "characters/" + race).then(res => res.json())
+            fetch(API + "characters/" + race).then(res => {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.json();
+            })
         );
         const raceResults = await Promise.all(racePromises);
         raceResults.forEach((obj, index) => {
             const raceName = races[index];
             const names = obj[raceName];
+            if (!names) throw new Error("Unexpected API response");
             names.forEach(name => {
                 pendingNamesList.push({ name, race: raceName });
             });
@@ -239,10 +255,18 @@ async function fetchData() {
             }
         }, 3000);
     } catch (error) {
-        charsGrid.innerHTML = `<p style="color:red;">Error loading characters! The API might be sleeping. Please refresh in a minute.</p>`;
-        console.error(error);
+        console.error("Attempt " + attempt + " failed:", error);
+        if (attempt < maxAttempts) {
+            fetchData(attempt + 1);
+        } else {
+            charsGrid.innerHTML = `<p style="color:#cc2200; text-align:center;">
+                ⚠️ Could not reach the API after ${maxAttempts} attempts.<br><br>
+                <button onclick="location.reload()" style="margin-top:10px; padding:10px 20px; background:#8b3a00; color:#fff; border:1px solid #ff6500; border-radius:4px; cursor:pointer; font-family:inherit; font-size:1rem; letter-spacing:1px;">↺ Retry</button>
+            </p>`;
+        }
     }
 }
+
 async function loadMoreCharacters(amount) {
     if (pendingNamesList.length === 0 || isFetching) return;
     isFetching = true;
@@ -304,7 +328,7 @@ function renderCharacters(characters) {
         const safeId = char.id.toString().replace(/[^a-zA-Z0-9]/g, '_');
 
         return `
-            <div class="card" style="--card-color: ${color}; view-transition-name: card-${char.id};">
+            <div class="card" style="--card-color: ${color};">
                 <img src="${img}" 
                      loading="lazy" 
                      onerror="this.onerror=null; this.src='${fallbackSafeUrl}';">
@@ -321,13 +345,7 @@ function renderCharacters(characters) {
     }).join("");
     if (newHtml === lastRender) return;
     lastRender = newHtml;
-    if (document.startViewTransition) {
-        document.startViewTransition(() => {
-            charsGrid.innerHTML = newHtml;
-        });
-    } else {
-        charsGrid.innerHTML = newHtml;
-    }
+    charsGrid.innerHTML = newHtml;
 }
 let searchTimeout;
 findInput.addEventListener('input', (e) => {
