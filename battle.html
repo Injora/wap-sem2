@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bleach Battle Arena - BATTLE!</title>
     <link rel="stylesheet" href="battle.css">
+    <link rel="icon" type="image/png" href="favicon.svg">
     <script>
-        (function() {
+        (function () {
             if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');
         })();
     </script>
@@ -16,7 +17,8 @@
 <body>
     <div id="flash_overlay"></div>
     <div id="impact_text"></div>
-    <button id="theme_toggle" onclick="toggleTheme()" title="Toggle light/dark mode" style="position:fixed;top:12px;right:16px;z-index:9999;">🌙</button>
+    <button id="theme_toggle" onclick="toggleTheme()" title="Toggle light/dark mode"
+        style="position:fixed;top:12px;right:16px;z-index:9999;">🌙</button>
     <header class="battle-header">
         <div class="team-info p1-info">
             <h2>Player 1</h2>
