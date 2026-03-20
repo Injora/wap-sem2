@@ -195,7 +195,7 @@ undoP1Btn.addEventListener("click", (e) => {
 undoP2Btn.addEventListener("click", (e) => {
     e.stopPropagation();
     if (p2Locked) {
-        alert("Team is locked 🔒");
+        alert("Team is locked");
         return;
     }
     if (p2Team.length === 0) return;
@@ -413,7 +413,7 @@ function applyFilters() {
 }
 window.addToTeam = function (name) {
     if ((activePlayer === 1 && p1Locked) || (activePlayer === 2 && p2Locked)) {
-        alert("Your team is locked 🔒");
+        alert("Your team is locked");
         return;
     }
     const currentTeam = activePlayer === 1 ? p1Team : p2Team;
@@ -450,7 +450,7 @@ window.removeFromTeam = function (name, playerNum) {
     const team = playerNum === 1 ? p1Team : p2Team;
     const isLocked = playerNum === 1 ? p1Locked : p2Locked;
     if (isLocked && team.length === 3) {
-        alert("Team is locked 🔒");
+        alert("Team is locked");
         return;
     }
     let removedChar;
