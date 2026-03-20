@@ -349,17 +349,17 @@ function showFinalWinner(winnerNum) {
     const title = document.getElementById("victory_title");
     screen.classList.remove('hidden');
     if (winnerNum === 1) {
-        title.textContent = "🏆 PLAYER 1 WINS! 🏆";
+        title.textContent = "PLAYER 1 WINS!";
         title.className = "p1-win";
         logMsg("Player 1 has claimed ultimate victory!", "p1");
         if (p1Fighter) p1Zone.classList.add('winner-glow');
     } else if (winnerNum === 2) {
-        title.textContent = "🏆 PLAYER 2 WINS! 🏆";
+        title.textContent = "PLAYER 2 WINS!";
         title.className = "p2-win";
         logMsg("Player 2 has conquered the arena!", "p2");
         if (p2Fighter) p2Zone.classList.add('winner-glow');
     } else {
-        title.textContent = "💀 COMPLETE ANNIHILATION 💀";
+        title.textContent = "COMPLETE ANNIHILATION";
         title.style.color = "#aaa";
         logMsg("Nobody survived the massacre...");
     }
